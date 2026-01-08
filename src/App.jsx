@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,6 +6,13 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
+  const [backendmessage, setBackendMessage] = useState('Loding from backend');
+  useEffect(()=>{
+    fetch('http://localhost:5000')
+      .then(res => res.json())
+      .then(data => setBackendMessage(data.message))
+      console.log("Fetched message from backend");
+  })
   return (
     <>
       <div>
@@ -16,7 +23,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>😎 Vite + React 😎(Kaki pilla)+(pandhi pilla)  </h1>
+      <h1>{backendmessage}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

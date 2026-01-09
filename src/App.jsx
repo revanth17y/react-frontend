@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const [backendmessage, setBackendMessage] = useState('Sai ❤️ Lav');
+  const [backendmessage, setBackendMessage] = useState('Santosh 🐍');
   useEffect(()=>{
     fetch('http://localhost:5000')
       .then(res => res.json())
